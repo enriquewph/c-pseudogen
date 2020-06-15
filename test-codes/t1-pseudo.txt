@@ -1,0 +1,33 @@
+INICIO;
+int fila, col, a, incognitas;
+float mat[20][20], num, res[10];
+Imp("Ingrese el orden de la matriz: ");
+Leer(incognitas);
+Imp("Ingrese los elementos a continuacion:");
+Para (fila = 1; fila <= incognitas; fila++)
+{
+    Para (col = 1; col <= (incognitas + 1); col++)
+    {
+        Imp(" - $fila,$fila:");
+        Leer(mat[fila][col]);
+    }
+}
+Para (col = 1; col <= incognitas; col++) 
+{
+    Para (fila = 1; fila <= incognitas; fila++) 
+    {
+        Si (fila != col) 
+        {
+            num = mat[fila][col] / mat[col][col]; 
+            Para (int i = 1; i <= incognitas + 1; i++)
+                mat[fila][i] = mat[fila][i] - num * mat[col][i];
+        }
+    }
+}
+Imp("El resultado de la ecuacion es:");
+Para (fila = 1; fila <= incognitas; fila++)
+{
+    res[fila] = mat[fila][incognitas + 1] / mat[fila][fila]; 
+    Imp("X$fila = $res[fila]");
+}
+FIN;

@@ -1,0 +1,62 @@
+INICIO;
+int codigo_empleado, var, var2;
+float salario_gerente, salario_por_hora_trabajadores, salario_por_articulo_destajo, salario, salario_acumulado = 0, var3;
+Imp("Programa para el calculo de pago semanal.");
+Imp("Por favor, ingrese el salario fijo para los gerentes: ");
+Leer(salario_gerente);
+Imp("Por favor, ingrese el salario por hora para trabajadores regulares: ");
+Leer(salario_por_hora_trabajadores);
+Imp("Por favor, ingrese el monto por articulo vendido para trabajadores a destajo: ");
+Leer(salario_por_articulo_destajo);
+Imp("");
+Imp("");
+Imp("------------------------");
+Imp("Gerente:              1 ");
+Imp("Trabajador por hora:  2 ");
+Imp("Comisionista:         3 ");
+Imp("Trabajador a destajo: 4 ");
+Imp("------------------------");
+Imp("Tenga presente la tabla para ingresar los codigos, ingrese cualquier otro numero para salir.");
+do
+{
+    Imp("Introduzca codigo de empleado:"); 
+    Leer(codigo_empleado);
+    Segun (codigo_empleado)
+    {
+    caso 1: 
+        salario_acumulado += salario_gerente;
+        Imp("El salario del empleado es de: $$salario_gerente");
+        salto;
+    caso 2: 
+        Imp("Horas trabajadas: "); 
+        Leer(var);
+        var2 = var - 40; 
+        Si (var2 < 0)
+            var2 = 0; 
+        var = var - var2; 
+        salario = ((float)var * salario_por_hora_trabajadores) + ((float)var2 * 1.5 * salario_por_hora_trabajadores);
+        salario_acumulado += salario;
+        Imp("El salario del empleado es de: $$salario");
+        salto;
+    caso 3: 
+        salario = 250;
+        Imp("Ventas brutas en pesos: "); 
+        Leer(var3); 
+        salario += var3 * 0.057; 
+        salario_acumulado += salario;
+        Imp("El salario del empleado es de: $$salario");
+        salto;
+    caso 4: 
+        Imp("Articulosvendidos: "); 
+        Leer(var);
+        salario = (float)(salario_por_articulo_destajo * var);
+        salario_acumulado += salario;
+        Imp("El salario del empleado es de: $$salario");
+        salto;
+    otro: 
+        codigo_empleado = -1;
+        salto;
+    }
+} Mientras (codigo_empleado > 0);
+Imp("El monto total en salarios de esta semana es de $$salario_acumulado");
+FIN;

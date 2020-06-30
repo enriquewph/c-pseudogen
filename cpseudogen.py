@@ -20,6 +20,7 @@ reglas = [
     ["else ","Sino "],
     ["while ","Mientras "],
     ["do {","Hacer {"],
+    ["	do","	Hacer"],
     ["int argc,char **argv",""],
     ["int main(void)","int main()"],
     ["int main()\n{","INICIO;"],
@@ -31,6 +32,7 @@ reglas = [
     ["default: ", "otro: "],
     ['\\' + 'n',""], #quitar \n de printfs y demas
     ["\n    ","\n"]] #quitar 1 tabulacion
+
 
 
 #Inicializar el programa
